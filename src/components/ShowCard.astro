@@ -1,0 +1,67 @@
+---
+interface Props {
+  date: string;
+  venue: string;
+  city: string;
+  state: string;
+  ticketUrl: string;
+  note: string;
+  isPast: boolean;
+}
+
+const { date, venue, city, state, ticketUrl, note, isPast } = Astro.props;
+
+const dateObj = new Date(date + 'T00:00:00');
+const month = dateObj.toLocaleString('en-US', { month: 'short' }).toUpperCase();
+const day = dateObj.getDate();
+---
+
+<div class:list={[
+  'flex flex-col sm:flex-row items-start sm:items-center gap-4 p-5 border-l-4 bg-[var(--color-bg-secondary)] transition-all duration-300',
+  isPast
+    ? 'border-[var(--color-text-muted)] opacity-50'
+    : 'border-[var(--color-neon-pink)] hover:shadow-[0_0_15px_var(--color-neon-pink-glow)]',
+]}>
+  <!-- Date badge -->
+  <div class="flex-shrink-0 text-center w-16">
+    <div class:list={[
+      'font-[family-name:var(--font-heading)] text-xs tracking-wider',
+      isPast ? 'text-[var(--color-text-muted)]' : 'text-[var(--color-neon-pink)]',
+    ]}>
+      {month}
+    </div>
+    <div class:list={[
+      'font-[family-name:var(--font-heading)] text-3xl font-bold',
+      isPast ? 'text-[var(--color-text-muted)]' : 'text-[var(--color-text-bright)]',
+    ]}>
+      {day}
+    </div>
+  </div>
+
+  <!-- Venue info -->
+  <div class="flex-1 min-w-0">
+    <h3 class:list={[
+      'font-[family-name:var(--font-heading)] text-lg font-bold',
+      isPast ? 'text-[var(--color-text-muted)]' : 'text-[var(--color-text-bright)]',
+    ]}>
+      {venue}
+    </h3>
+    <p class="text-[var(--color-text-muted)] text-sm">
+      {city}, {state}
+      {note && <span class="ml-2 text-[var(--color-neon-cyan)]">// {note}</span>}
+    </p>
+  </div>
+
+  <!-- Ticket button -->
+  <div class="flex-shrink-0">
+    {isPast ? (
+      <span class="text-sm text-[var(--color-text-muted)] uppercase tracking-wider">Past</span>
+    ) : ticketUrl ? (
+      <a href={ticketUrl} target="_blank" rel="noopener noreferrer" class="neon-btn text-sm py-2 px-4">
+        Tickets
+      </a>
+    ) : (
+      <span class="text-sm text-[var(--color-text-muted)] uppercase tracking-wider">TBA</span>
+    )}
+  </div>
+</div>

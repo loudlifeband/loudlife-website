@@ -1,0 +1,34 @@
+[
+  {
+    "date": "2026-03-15",
+    "venue": "The Troubadour",
+    "city": "Los Angeles",
+    "state": "CA",
+    "ticketUrl": "https://tickets.example.com/loudlife",
+    "note": "w/ Dead Satellites"
+  },
+  {
+    "date": "2026-04-02",
+    "venue": "Elsewhere",
+    "city": "Brooklyn",
+    "state": "NY",
+    "ticketUrl": "https://tickets.example.com/loudlife-bk",
+    "note": ""
+  },
+  {
+    "date": "2026-05-10",
+    "venue": "Bottom Lounge",
+    "city": "Chicago",
+    "state": "IL",
+    "ticketUrl": "",
+    "note": "TBA"
+  },
+  {
+    "date": "2025-12-01",
+    "venue": "The Roxy",
+    "city": "Los Angeles",
+    "state": "CA",
+    "ticketUrl": "",
+    "note": "SOLD OUT"
+  }
+]

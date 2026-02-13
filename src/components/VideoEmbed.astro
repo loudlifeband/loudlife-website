@@ -1,0 +1,35 @@
+---
+interface Props {
+  title: string;
+  youtubeId: string;
+  featured?: boolean;
+}
+
+const { title, youtubeId, featured = false } = Astro.props;
+
+const thumbnailUrl = `https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg`;
+const embedUrl = `https://www.youtube.com/embed/${youtubeId}?autoplay=1`;
+
+// srcdoc pattern: shows thumbnail, loads iframe on click
+const srcdoc = `<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%;background:#0a0a0f}img{position:absolute;width:100%;top:0;bottom:0;margin:auto}.play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:68px;height:48px;background:var(--color-neon-pink,#ff2d95);border-radius:4px;display:flex;align-items:center;justify-content:center}.play::after{content:'';border-style:solid;border-width:10px 0 10px 20px;border-color:transparent transparent transparent #0a0a0f}</style><a href="https://www.youtube.com/embed/${youtubeId}?autoplay=1"><img src="${thumbnailUrl}" alt="${title}"><div class="play"></div></a>`;
+---
+
+<div class="group">
+  <div class:list={[
+    'embed-container border border-[var(--color-bg-card)] hover:border-[var(--color-neon-pink)] transition-colors duration-300 hover:shadow-[0_0_15px_var(--color-neon-pink-glow)]',
+    featured ? 'aspect-video' : 'aspect-video',
+  ]}>
+    <iframe
+      class="w-full h-full"
+      srcdoc={srcdoc}
+      src={embedUrl}
+      title={title}
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+      loading="lazy"
+    ></iframe>
+  </div>
+  <p class="mt-2 text-sm text-[var(--color-text-muted)] group-hover:text-[var(--color-neon-pink)] transition-colors">
+    {title}
+  </p>
+</div>

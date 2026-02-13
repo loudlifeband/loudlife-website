@@ -1,0 +1,39 @@
+---
+import GlitchText from './GlitchText.astro';
+import site from '../data/site.json';
+---
+
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+  <!-- Background gradient -->
+  <div class="absolute inset-0 bg-gradient-to-b from-[#1a0020] via-[var(--color-bg-primary)] to-[var(--color-bg-primary)]"></div>
+
+  <!-- Animated grid lines -->
+  <div class="absolute inset-0 opacity-10"
+    style="background-image: linear-gradient(var(--color-neon-pink) 1px, transparent 1px), linear-gradient(90deg, var(--color-neon-pink) 1px, transparent 1px); background-size: 60px 60px;">
+  </div>
+
+  <!-- Content -->
+  <div class="relative z-10 text-center px-4 pt-16">
+    <GlitchText
+      text={site.bandName}
+      tag="h1"
+      class="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black text-[var(--color-text-bright)] mb-6"
+    />
+
+    <p class="text-lg sm:text-xl md:text-2xl text-[var(--color-neon-pink)] font-[family-name:var(--font-body)] mb-12 tracking-widest uppercase">
+      {site.tagline}
+    </p>
+
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a href="#music" class="neon-btn-filled">
+        Listen Now
+      </a>
+      <a href="/tour" class="neon-btn">
+        See Us Live
+      </a>
+    </div>
+  </div>
+
+  <!-- Bottom fade -->
+  <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[var(--color-bg-primary)] to-transparent"></div>
+</section>

@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Music Video",
+    "youtubeId": "REPLACE_WITH_VIDEO_ID",
+    "featured": true,
+    "publishedDate": "2025-10-20"
+  },
+  {
+    "title": "Live Performance",
+    "youtubeId": "REPLACE_WITH_VIDEO_ID",
+    "featured": false,
+    "publishedDate": "2025-07-04"
+  }
+]

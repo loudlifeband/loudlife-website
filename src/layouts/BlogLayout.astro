@@ -1,0 +1,61 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  date: string;
+  author?: string;
+}
+
+const { title, date, author } = Astro.props;
+
+const formattedDate = new Date(date + 'T00:00:00').toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout title={title}>
+  <article class="pt-32 pb-16 md:pt-40 md:pb-24 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mx-auto">
+      <!-- Header -->
+      <header class="mb-12">
+        <h1 class="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl md:text-5xl font-bold text-[var(--color-neon-pink)] mb-4 leading-tight">
+          {title}
+        </h1>
+        <div class="flex items-center gap-3 text-sm text-[var(--color-text-muted)]">
+          <time datetime={date}>{formattedDate}</time>
+          {author && (
+            <>
+              <span class="text-[var(--color-neon-pink)]">//</span>
+              <span>{author}</span>
+            </>
+          )}
+        </div>
+      </header>
+
+      <!-- Content -->
+      <div class="prose prose-lg prose-invert prose-cyberpunk max-w-none
+        prose-headings:font-[family-name:var(--font-heading)]
+        prose-headings:text-[var(--color-text-bright)]
+        prose-a:text-[var(--color-neon-pink)]
+        prose-a:no-underline
+        hover:prose-a:underline
+        prose-strong:text-[var(--color-text-bright)]
+        prose-code:text-[var(--color-neon-cyan)]
+        prose-blockquote:border-[var(--color-neon-pink)]
+        prose-hr:border-[var(--color-bg-card)]
+      ">
+        <slot />
+      </div>
+
+      <!-- Back link -->
+      <div class="mt-16 pt-8 border-t border-[var(--color-bg-card)]">
+        <a href="/" class="neon-btn text-sm py-2 px-4">
+          &larr; Back to Home
+        </a>
+      </div>
+    </div>
+  </article>
+</BaseLayout>

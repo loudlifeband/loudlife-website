@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/HeroSection.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import MusicEmbed from '../components/MusicEmbed.astro';
+import VideoEmbed from '../components/VideoEmbed.astro';
+import music from '../data/music.json';
+import videos from '../data/videos.json';
+
+const featuredVideos = videos.filter((v) => v.featured);
+const otherVideos = videos.filter((v) => !v.featured);
+---
+
+<BaseLayout>
+  <HeroSection />
+
+  <!-- Music Section -->
+  <section id="music" class="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <SectionHeading text="Latest Drops" />
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {music.map((track) => (
+        <MusicEmbed
+          title={track.title}
+          embedUrl={track.embedUrl}
+          platform={track.platform}
+        />
+      ))}
+    </div>
+  </section>
+
+  <!-- Videos Section -->
+  <section class="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <SectionHeading text="Watch" />
+
+    {/* Featured video - full width */}
+    {featuredVideos.map((video) => (
+      <div class="mb-8">
+        <VideoEmbed
+          title={video.title}
+          youtubeId={video.youtubeId}
+          featured={true}
+        />
+      </div>
+    ))}
+
+    {/* Other videos - grid */}
+    {otherVideos.length > 0 && (
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {otherVideos.map((video) => (
+          <VideoEmbed
+            title={video.title}
+            youtubeId={video.youtubeId}
+          />
+        ))}
+      </div>
+    )}
+  </section>
+
+  <!-- Blog Teaser -->
+  <section class="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <SectionHeading text="From the Blog" />
+    <div class="max-w-2xl mx-auto">
+      <a
+        href="/blog/my-guitar-is-janky-but-its-got-heart"
+        class="block p-6 border border-[var(--color-bg-card)] bg-[var(--color-bg-secondary)] hover:border-[var(--color-neon-pink)] transition-all duration-300 hover:shadow-[0_0_20px_var(--color-neon-pink-glow)] group"
+      >
+        <h3 class="font-[family-name:var(--font-heading)] text-xl md:text-2xl text-[var(--color-text-bright)] group-hover:text-[var(--color-neon-pink)] transition-colors mb-3">
+          My Guitar is Janky, But It's Got Heart
+        </h3>
+        <p class="text-[var(--color-text-muted)] mb-4">
+          Some guitars cost thousands. Mine cost me a story.
+        </p>
+        <span class="neon-btn text-sm py-2 px-4 inline-block">
+          Read More
+        </span>
+      </a>
+    </div>
+  </section>
+</BaseLayout>

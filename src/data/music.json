@@ -1,0 +1,16 @@
+[
+  {
+    "title": "Latest Release",
+    "platform": "spotify",
+    "embedUrl": "https://open.spotify.com/embed/album/REPLACE_WITH_YOUR_ALBUM_ID?theme=0",
+    "releaseDate": "2025-11-01",
+    "featured": true
+  },
+  {
+    "title": "Single",
+    "platform": "spotify",
+    "embedUrl": "https://open.spotify.com/embed/track/REPLACE_WITH_YOUR_TRACK_ID?theme=0",
+    "releaseDate": "2025-08-15",
+    "featured": false
+  }
+]
