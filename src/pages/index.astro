@@ -32,6 +32,21 @@ const instagramHandle = '@loud_life_4_life';
 <BaseLayout>
   <HeroSection />
 
+  <!-- Featured Video Banner -->
+  <section class="w-full">
+    <div class="relative w-full" style="padding-bottom: 56.25%;">
+      <iframe
+        class="absolute inset-0 w-full h-full"
+        src="https://www.youtube.com/embed/9vLPW_H4w9I?autoplay=1&mute=1&loop=1&playlist=9vLPW_H4w9I&controls=0&showinfo=0&rel=0&modestbranding=1"
+        title="AFA"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        allowfullscreen
+        loading="lazy"
+      ></iframe>
+    </div>
+  </section>
+
   <!-- Tour Dates Section -->
   <section class="py-12 md:py-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
     <SectionHeading text="Catch Us Live" />
@@ -185,8 +200,19 @@ const instagramHandle = '@loud_life_4_life';
 
   <!-- Comics Section -->
   <section id="comics" class="py-12 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden scroll-mt-16">
-    <!-- Background accent -->
-    <div class="absolute inset-0 bg-gradient-to-b from-[var(--color-bg-primary)] via-[#1a0020]/30 to-[var(--color-bg-primary)]"></div>
+    <!-- Vantablack AMV background video -->
+    <div class="absolute inset-0 overflow-hidden">
+      <iframe
+        class="absolute top-1/2 left-1/2 w-[177.78vh] min-w-full h-[56.25vw] min-h-full -translate-x-1/2 -translate-y-1/2"
+        src="https://www.youtube.com/embed/fEN_igrxCFg?autoplay=1&mute=1&loop=1&playlist=fEN_igrxCFg&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
+        title="Vantablack AMV Background"
+        frameborder="0"
+        allow="autoplay; encrypted-media"
+        loading="lazy"
+      ></iframe>
+    </div>
+    <!-- Dark overlay for readability -->
+    <div class="absolute inset-0 bg-[var(--color-bg-primary)]/70"></div>
 
     <div class="relative z-10 max-w-5xl mx-auto">
       <SectionHeading text="The Comic" />
