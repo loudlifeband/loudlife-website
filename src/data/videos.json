@@ -1,14 +1,98 @@
 [
   {
-    "title": "Music Video",
-    "youtubeId": "REPLACE_WITH_VIDEO_ID",
+    "title": "AFA",
+    "youtubeId": "9vLPW_H4w9I",
     "featured": true,
-    "publishedDate": "2025-10-20"
+    "publishedDate": "2025-10-31"
   },
   {
-    "title": "Live Performance",
-    "youtubeId": "REPLACE_WITH_VIDEO_ID",
+    "title": "Vantablack AMV",
+    "youtubeId": "fEN_igrxCFg",
+    "featured": true,
+    "publishedDate": "2024-01-01"
+  },
+  {
+    "title": "Neon Icons",
+    "youtubeId": "T70HxUQMO1A",
     "featured": false,
-    "publishedDate": "2025-07-04"
+    "publishedDate": "2021-04-20"
+  },
+  {
+    "title": "She's Dope",
+    "youtubeId": "5x55W4rsSMk",
+    "featured": false,
+    "publishedDate": "2020-01-01"
+  },
+  {
+    "title": "Vantablack AMV Trailer",
+    "youtubeId": "s3m9w04Vbzo",
+    "featured": false,
+    "publishedDate": "2024-01-01"
+  },
+  {
+    "title": "Foodieland Night Market - Live",
+    "youtubeId": "eH1TAtbzLPQ",
+    "featured": false,
+    "publishedDate": "2023-01-01"
+  },
+  {
+    "title": "Sore Loser - Live",
+    "youtubeId": "_bW6rmpyB-E",
+    "featured": false,
+    "publishedDate": "2023-01-01"
+  },
+  {
+    "title": "Getting High With Jesus - Live",
+    "youtubeId": "ehuGA5_wyHU",
+    "featured": false,
+    "publishedDate": "2023-01-01"
+  },
+  {
+    "title": "My Guitar Is Janky - Live",
+    "youtubeId": "L7j352Zag5k",
+    "featured": false,
+    "publishedDate": "2023-01-01"
+  },
+  {
+    "title": "She's Dope (Ian's Guitar Solo) - Live",
+    "youtubeId": "yE33BTMN2hg",
+    "featured": false,
+    "publishedDate": "2023-01-01"
+  },
+  {
+    "title": "She's Dope - Live",
+    "youtubeId": "wdsndpQdKls",
+    "featured": false,
+    "publishedDate": "2023-01-01"
+  },
+  {
+    "title": "Vanta Black - Live",
+    "youtubeId": "6N5W0C4M5_8",
+    "featured": false,
+    "publishedDate": "2023-01-01"
+  },
+  {
+    "title": "Neon Icons - Live at Bottom of the Hill SF",
+    "youtubeId": "hJwnLEBqlzA",
+    "featured": false,
+    "publishedDate": "2022-01-01"
+  },
+  {
+    "title": "Neon Icons - Live at Xbar",
+    "youtubeId": "WSq1zuPpm68",
+    "featured": false,
+    "publishedDate": "2022-01-01"
+  },
+  {
+    "title": "She's Dope - Live at Xbar",
+    "youtubeId": "4pCU-Nbe9t0",
+    "featured": false,
+    "publishedDate": "2022-01-01"
+  },
+  {
+    "title": "I Love It",
+    "youtubeId": "QJ9MOjaLCmM",
+    "featured": false,
+    "publishedDate": "2024-01-01"
   }
 ]

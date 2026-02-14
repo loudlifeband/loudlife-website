@@ -17,21 +17,21 @@ const day = dateObj.getDate();
 ---
 
 <div class:list={[
-  'flex flex-col sm:flex-row items-start sm:items-center gap-4 p-5 border-l-4 bg-[var(--color-bg-secondary)] transition-all duration-300',
+  'flex items-center gap-3 sm:gap-4 p-4 sm:p-5 border-l-4 bg-[var(--color-bg-secondary)] transition-all duration-300 active:scale-[0.98]',
   isPast
     ? 'border-[var(--color-text-muted)] opacity-50'
     : 'border-[var(--color-neon-pink)] hover:shadow-[0_0_15px_var(--color-neon-pink-glow)]',
 ]}>
   <!-- Date badge -->
-  <div class="flex-shrink-0 text-center w-16">
+  <div class="flex-shrink-0 text-center w-12 sm:w-16">
     <div class:list={[
-      'font-[family-name:var(--font-heading)] text-xs tracking-wider',
+      'font-[family-name:var(--font-heading)] text-[10px] sm:text-xs tracking-wider',
       isPast ? 'text-[var(--color-text-muted)]' : 'text-[var(--color-neon-pink)]',
     ]}>
       {month}
     </div>
     <div class:list={[
-      'font-[family-name:var(--font-heading)] text-3xl font-bold',
+      'font-[family-name:var(--font-heading)] text-2xl sm:text-3xl font-bold',
       isPast ? 'text-[var(--color-text-muted)]' : 'text-[var(--color-text-bright)]',
     ]}>
       {day}
@@ -41,27 +41,23 @@ const day = dateObj.getDate();
   <!-- Venue info -->
   <div class="flex-1 min-w-0">
     <h3 class:list={[
-      'font-[family-name:var(--font-heading)] text-lg font-bold',
+      'font-[family-name:var(--font-heading)] text-sm sm:text-lg font-bold truncate',
       isPast ? 'text-[var(--color-text-muted)]' : 'text-[var(--color-text-bright)]',
     ]}>
       {venue}
     </h3>
-    <p class="text-[var(--color-text-muted)] text-sm">
+    <p class="text-[var(--color-text-muted)] text-xs sm:text-sm truncate">
       {city}, {state}
       {note && <span class="ml-2 text-[var(--color-neon-cyan)]">// {note}</span>}
     </p>
   </div>
 
   <!-- Ticket button -->
-  <div class="flex-shrink-0">
-    {isPast ? (
-      <span class="text-sm text-[var(--color-text-muted)] uppercase tracking-wider">Past</span>
-    ) : ticketUrl ? (
-      <a href={ticketUrl} target="_blank" rel="noopener noreferrer" class="neon-btn text-sm py-2 px-4">
+  {ticketUrl && !isPast && (
+    <div class="flex-shrink-0">
+      <a href={ticketUrl} target="_blank" rel="noopener noreferrer" class="neon-btn text-xs sm:text-sm py-2 px-3 sm:px-4">
         Tickets
       </a>
-    ) : (
-      <span class="text-sm text-[var(--color-text-muted)] uppercase tracking-wider">TBA</span>
-    )}
-  </div>
+    </div>
+  )}
 </div>

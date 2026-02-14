@@ -4,37 +4,164 @@ import HeroSection from '../components/HeroSection.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import MusicEmbed from '../components/MusicEmbed.astro';
 import VideoEmbed from '../components/VideoEmbed.astro';
+import ShowCard from '../components/ShowCard.astro';
 import music from '../data/music.json';
 import videos from '../data/videos.json';
+import comics from '../data/comics.json';
+import shows from '../data/shows.json';
 
 const featuredVideos = videos.filter((v) => v.featured);
 const otherVideos = videos.filter((v) => !v.featured);
+
+const now = new Date();
+const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+const sortedShows = [...shows].sort(
+  (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+);
+const upcomingShows = sortedShows.filter(
+  (show) => new Date(show.date + 'T00:00:00') >= today
+);
+const pastShows = sortedShows
+  .filter((show) => new Date(show.date + 'T00:00:00') < today)
+  .reverse();
+
+const instagramUrl = 'https://www.instagram.com/loud_life_4_life/';
+const instagramHandle = '@loud_life_4_life';
 ---
 
 <BaseLayout>
   <HeroSection />
 
+  <!-- Tour Dates Section -->
+  <section class="py-12 md:py-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+    <SectionHeading text="Catch Us Live" />
+
+    {upcomingShows.length > 0 && (
+      <div class="flex flex-col gap-3 md:gap-4 mb-6 md:mb-8">
+        {upcomingShows.map((show) => (
+          <ShowCard
+            date={show.date}
+            venue={show.venue}
+            city={show.city}
+            state={show.state}
+            ticketUrl={show.ticketUrl}
+            note={show.note}
+            isPast={false}
+          />
+        ))}
+      </div>
+    )}
+
+    {pastShows.length > 0 && (
+      <>
+        <h3 class="font-[family-name:var(--font-heading)] text-xs sm:text-sm uppercase tracking-widest text-[var(--color-text-muted)] mb-3 md:mb-4">
+          Past Shows
+        </h3>
+        <div class="flex flex-col gap-2 md:gap-3 mb-6 md:mb-8">
+          {pastShows.map((show) => (
+            <ShowCard
+              date={show.date}
+              venue={show.venue}
+              city={show.city}
+              state={show.state}
+              ticketUrl={show.ticketUrl}
+              note={show.note}
+              isPast={true}
+            />
+          ))}
+        </div>
+      </>
+    )}
+
+    <div class="text-center">
+      <a href="/tour" class="neon-btn text-xs sm:text-sm">
+        View All Shows
+      </a>
+    </div>
+  </section>
+
   <!-- Music Section -->
-  <section id="music" class="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-    <SectionHeading text="Latest Drops" />
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {music.map((track) => (
-        <MusicEmbed
-          title={track.title}
-          embedUrl={track.embedUrl}
-          platform={track.platform}
-        />
-      ))}
+  <section id="music" class="py-12 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <!-- Band art background -->
+    <div class="absolute inset-0 flex justify-center items-center pointer-events-none">
+      <img
+        src="/images/band_art.png"
+        alt=""
+        class="w-full max-w-3xl h-auto opacity-30 object-contain"
+        loading="lazy"
+      />
+    </div>
+    <div class="relative z-10 max-w-7xl mx-auto">
+      <SectionHeading text="Latest Drops" />
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+        {music.map((track) => (
+          <MusicEmbed
+            title={track.title}
+            embedUrl={track.embedUrl}
+            platform={track.platform}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Instagram Section -->
+  <section class="py-12 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-[var(--color-bg-primary)] via-[#1a0020]/40 to-[var(--color-bg-primary)]"></div>
+    <div class="relative z-10 max-w-4xl mx-auto">
+      <SectionHeading text="Follow Us" />
+      <a
+        href={instagramUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group block active:scale-[0.98] transition-transform"
+      >
+        <div class="border border-[var(--color-bg-card)] hover:border-[var(--color-neon-pink)] bg-[var(--color-bg-secondary)] transition-all duration-500 hover:shadow-[0_0_40px_var(--color-neon-pink-glow)] p-6 sm:p-8 md:p-12 text-center relative overflow-hidden">
+          <!-- Image mosaic background -->
+          <div class="absolute inset-0 grid grid-cols-3 grid-rows-2 gap-0 opacity-15 group-hover:opacity-25 transition-opacity duration-500">
+            <img src="/images/background_image.avif" alt="" class="w-full h-full object-cover" />
+            <img src="/images/band_art.png" alt="" class="w-full h-full object-cover" />
+            <img src="/images/women_octopus.avif" alt="" class="w-full h-full object-cover" />
+            <img src="/images/horizontal_stretch.avif" alt="" class="w-full h-full object-cover" />
+            <img src="/images/background_image.avif" alt="" class="w-full h-full object-cover object-top" />
+            <img src="/images/band_art.png" alt="" class="w-full h-full object-cover object-bottom" />
+          </div>
+          <!-- Dark overlay for text readability -->
+          <div class="absolute inset-0 bg-[var(--color-bg-primary)]/60"></div>
+
+          <!-- Instagram icon -->
+          <div class="relative z-10 mb-4 md:mb-6 inline-block">
+            <div class="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 border-2 border-[var(--color-neon-pink)] rounded-2xl flex items-center justify-center group-hover:shadow-[0_0_25px_var(--color-neon-pink-glow),inset_0_0_25px_var(--color-neon-pink-glow)] transition-all duration-500 group-hover:scale-110">
+              <svg class="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 text-[var(--color-neon-pink)]" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Handle -->
+          <h3 class="relative z-10 font-[family-name:var(--font-heading)] text-xl sm:text-2xl md:text-4xl font-bold text-[var(--color-text-bright)] group-hover:text-[var(--color-neon-pink)] transition-colors mb-2 md:mb-3">
+            {instagramHandle}
+          </h3>
+          <p class="relative z-10 text-[var(--color-text-muted)] mb-4 md:mb-6 font-[family-name:var(--font-body)] text-xs sm:text-sm tracking-wide">
+            Behind the scenes, live clips, and chaos
+          </p>
+
+          <!-- CTA -->
+          <span class="relative z-10 inline-block neon-btn-filled text-xs sm:text-sm group-hover:shadow-[0_0_20px_var(--color-neon-pink-glow)]">
+            Follow on Instagram
+          </span>
+        </div>
+      </a>
     </div>
   </section>
 
   <!-- Videos Section -->
-  <section class="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+  <section class="py-12 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
     <SectionHeading text="Watch" />
 
     {/* Featured video - full width */}
     {featuredVideos.map((video) => (
-      <div class="mb-8">
+      <div class="mb-4 md:mb-8">
         <VideoEmbed
           title={video.title}
           youtubeId={video.youtubeId}
@@ -45,7 +172,7 @@ const otherVideos = videos.filter((v) => !v.featured);
 
     {/* Other videos - grid */}
     {otherVideos.length > 0 && (
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
         {otherVideos.map((video) => (
           <VideoEmbed
             title={video.title}
@@ -56,23 +183,117 @@ const otherVideos = videos.filter((v) => !v.featured);
     )}
   </section>
 
-  <!-- Blog Teaser -->
-  <section class="py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-    <SectionHeading text="From the Blog" />
-    <div class="max-w-2xl mx-auto">
-      <a
-        href="/blog/my-guitar-is-janky-but-its-got-heart"
-        class="block p-6 border border-[var(--color-bg-card)] bg-[var(--color-bg-secondary)] hover:border-[var(--color-neon-pink)] transition-all duration-300 hover:shadow-[0_0_20px_var(--color-neon-pink-glow)] group"
-      >
-        <h3 class="font-[family-name:var(--font-heading)] text-xl md:text-2xl text-[var(--color-text-bright)] group-hover:text-[var(--color-neon-pink)] transition-colors mb-3">
-          My Guitar is Janky, But It's Got Heart
-        </h3>
-        <p class="text-[var(--color-text-muted)] mb-4">
-          Some guitars cost thousands. Mine cost me a story.
-        </p>
-        <span class="neon-btn text-sm py-2 px-4 inline-block">
-          Read More
-        </span>
+  <!-- Comics Section -->
+  <section id="comics" class="py-12 md:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden scroll-mt-16">
+    <!-- Background accent -->
+    <div class="absolute inset-0 bg-gradient-to-b from-[var(--color-bg-primary)] via-[#1a0020]/30 to-[var(--color-bg-primary)]"></div>
+
+    <div class="relative z-10 max-w-5xl mx-auto">
+      <SectionHeading text="The Comic" />
+
+      <!-- Synopsis + Cover -->
+      <div class="flex flex-col md:flex-row gap-6 md:gap-8 items-center mb-10 md:mb-16">
+        <!-- Cover art from Webtoons -->
+        <div class="w-full md:w-2/5 flex-shrink-0">
+          <a href={comics.listUrl} target="_blank" rel="noopener noreferrer" class="block active:scale-[0.98] transition-transform">
+            <div class="border border-[var(--color-bg-card)] hover:border-[var(--color-neon-pink)] transition-all duration-300 hover:shadow-[0_0_20px_var(--color-neon-pink-glow)] overflow-hidden">
+              <img
+                src={comics.coverUrl}
+                alt="Loud Life Comic Cover"
+                class="w-full h-auto"
+                loading="lazy"
+              />
+            </div>
+          </a>
+          <div class="flex flex-wrap items-center gap-2 sm:gap-3 mt-3 text-[10px] sm:text-xs text-[var(--color-text-muted)]">
+            <span class="uppercase tracking-wider">{comics.platform}</span>
+            <span class="text-[var(--color-neon-pink)]">//</span>
+            <span>{comics.genre.join(' / ')}</span>
+            <span class="text-[var(--color-neon-pink)]">//</span>
+            <span>{comics.rating}</span>
+          </div>
+        </div>
+
+        <!-- Story -->
+        <div class="w-full md:w-3/5">
+          <h3 class="font-[family-name:var(--font-heading)] text-xl sm:text-2xl md:text-3xl font-bold text-[var(--color-text-bright)] mb-3 md:mb-4">
+            <span class="text-[var(--color-neon-pink)]">Rudeboi</span> &amp; The Neon Icons
+          </h3>
+          <p class="text-sm sm:text-base text-[var(--color-text-primary)] leading-relaxed mb-3 md:mb-4">
+            A young musician with the dream of becoming the next big ICON finds himself unexpectedly in debt to a larger-than-life metal band called <span class="text-[var(--color-neon-pink)]">Loud Life</span>.
+          </p>
+          <p class="text-xs sm:text-sm text-[var(--color-text-muted)] leading-relaxed mb-4 md:mb-6">
+            Taking place in a dystopian future of the San Francisco Bay Area, Rudeboi embarks on insane adventures as a roadie for the Neon Icons &mdash; risking his own life, dignity, and romance for the sake of the band and their status.
+          </p>
+          <a
+            href={comics.listUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="neon-btn-filled text-xs sm:text-sm active:scale-95 transition-transform"
+          >
+            Read on Webtoons
+          </a>
+        </div>
+      </div>
+
+      <!-- Episode List -->
+      <h3 class="font-[family-name:var(--font-heading)] text-base sm:text-xl font-bold text-[var(--color-text-bright)] mb-4 md:mb-6 uppercase tracking-wider">
+        Episodes <span class="text-[var(--color-neon-pink)]">// {comics.episodes.length} Chapters</span>
+      </h3>
+      <div class="flex flex-col gap-2 md:gap-3">
+        {comics.episodes.map((ep) => {
+          const date = new Date(ep.date + 'T00:00:00');
+          const formatted = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+          return (
+            <a
+              href={ep.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 border-l-4 border-[var(--color-neon-pink)] bg-[var(--color-bg-secondary)] hover:shadow-[0_0_15px_var(--color-neon-pink-glow)] transition-all duration-300 group active:scale-[0.98]"
+            >
+              <span class="font-[family-name:var(--font-heading)] text-xl sm:text-2xl font-bold text-[var(--color-neon-pink)] w-8 sm:w-12 text-center flex-shrink-0">
+                {String(ep.number).padStart(2, '0')}
+              </span>
+              <div class="flex-1 min-w-0">
+                <h4 class="font-[family-name:var(--font-heading)] text-xs sm:text-sm md:text-base font-bold text-[var(--color-text-bright)] group-hover:text-[var(--color-neon-pink)] transition-colors truncate">
+                  {ep.title}
+                </h4>
+                <p class="text-[10px] sm:text-xs text-[var(--color-text-muted)]">{formatted}</p>
+              </div>
+              <span class="text-[var(--color-text-muted)] group-hover:text-[var(--color-neon-pink)] transition-colors flex-shrink-0 text-xs sm:text-sm">
+                Read &rarr;
+              </span>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="py-12 md:py-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+    <SectionHeading text="About" />
+    <div class="space-y-4 md:space-y-6">
+      <p class="text-sm sm:text-base text-[var(--color-text-primary)] leading-relaxed">
+        <span class="text-[var(--color-neon-pink)] font-bold">Loud Life</span>, a.k.a The Neon Icons, is a bold and electrifying hard rock band that's rewriting the rulebook by blending massive guitar riffs with intense, futuristic synths. Formed in the heart of Oakland during the chaos of the pandemic, the band emerged as a creative force fueled by isolation, innovation, and a passion for pushing boundaries.
+      </p>
+      <p class="text-sm sm:text-base text-[var(--color-text-primary)] leading-relaxed">
+        But Loud Life isn't just about the music&mdash;it's about storytelling. Alongside their hard-hitting tracks, the band is currently working on a unique anime series that blends their music with a visual narrative. It's a project that fuses their love for rock with anime culture and comedy, offering fans a full experience that's multi-dimensional and all-consuming.
+      </p>
+      <p class="text-sm sm:text-base text-[var(--color-text-primary)] leading-relaxed">
+        With their gritty rock anthems, futuristic synth landscapes, and a visual universe in the making, Loud Life is on a mission to grow their fanbase and build a community of passionate listeners and creators.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="bg-[var(--color-neon-pink)] py-8 md:py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="font-[family-name:var(--font-heading)] text-xl sm:text-2xl md:text-3xl font-black text-black uppercase tracking-wider mb-3 md:mb-4">
+        Contact
+      </h2>
+      <a href="mailto:loudlifeband@gmail.com" class="font-[family-name:var(--font-body)] text-sm sm:text-lg md:text-xl font-bold text-black hover:text-[var(--color-bg-primary)] transition-colors active:scale-95 inline-block">
+        loudlifeband@gmail.com
       </a>
     </div>
   </section>

@@ -1,16 +1,37 @@
 [
   {
-    "title": "Latest Release",
+    "title": "AFA",
     "platform": "spotify",
-    "embedUrl": "https://open.spotify.com/embed/album/REPLACE_WITH_YOUR_ALBUM_ID?theme=0",
-    "releaseDate": "2025-11-01",
+    "embedUrl": "https://open.spotify.com/embed/track/2CGfxVap88PDMVpgFUTVXm?theme=0",
+    "releaseDate": "2025-10-31",
     "featured": true
   },
   {
-    "title": "Single",
+    "title": "Vanta Black",
     "platform": "spotify",
-    "embedUrl": "https://open.spotify.com/embed/track/REPLACE_WITH_YOUR_TRACK_ID?theme=0",
-    "releaseDate": "2025-08-15",
+    "embedUrl": "https://open.spotify.com/embed/album/4fX3RPuJ2DxuRoS7Eo8u0K?theme=0",
+    "releaseDate": "2024-01-01",
+    "featured": true
+  },
+  {
+    "title": "Sore Loser",
+    "platform": "spotify",
+    "embedUrl": "https://open.spotify.com/embed/album/3ggTX0ZKfSngYuCB71zKFK?theme=0",
+    "releaseDate": "2023-01-01",
+    "featured": false
+  },
+  {
+    "title": "Neon Icons",
+    "platform": "spotify",
+    "embedUrl": "https://open.spotify.com/embed/album/6e1zzzwdAftTup4kDLOjYX?theme=0",
+    "releaseDate": "2021-04-20",
+    "featured": false
+  },
+  {
+    "title": "She's Dope",
+    "platform": "spotify",
+    "embedUrl": "https://open.spotify.com/embed/album/7blB4aqmaYCgj3eO6Cp10b?theme=0",
+    "releaseDate": "2020-01-01",
     "featured": false
   }
 ]

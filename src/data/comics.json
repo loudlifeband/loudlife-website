@@ -1,0 +1,53 @@
+{
+  "title": "Loud Life",
+  "platform": "WEBTOON Canvas",
+  "genre": ["Comedy", "Action"],
+  "rating": "Mature",
+  "listUrl": "https://www.webtoons.com/en/canvas/loud-life/list?title_no=939294",
+  "coverUrl": "/images/comic_cover.jpg",
+  "description": "Rudeboi, a young musician with the dream of becoming the next big ICON, finds himself unexpectedly in debt to a larger-than-life metal band called Loud Life. Taking place in a dystopian future of the San Francisco Bay Area, Rudeboi embarks on many insane adventures as a roadie for the Neon Icons, risking his own life, dignity, and romance for the sake of the band and their status.",
+  "episodes": [
+    {
+      "number": 1,
+      "title": "My Guitar is Janky, but it's Got Heart",
+      "date": "2024-02-26",
+      "url": "https://www.webtoons.com/en/canvas/loud-life/my-guitar-is-janky-but-its-got-heart/viewer?title_no=939294&episode_no=1"
+    },
+    {
+      "number": 2,
+      "title": "Cream Tangerine",
+      "date": "2024-03-03",
+      "url": "https://www.webtoons.com/en/canvas/loud-life/cream-tangerine/viewer?title_no=939294&episode_no=2"
+    },
+    {
+      "number": 3,
+      "title": "Fang Bangin",
+      "date": "2024-04-25",
+      "url": "https://www.webtoons.com/en/canvas/loud-life/fang-bangin/viewer?title_no=939294&episode_no=3"
+    },
+    {
+      "number": 4,
+      "title": "Meet-n-Greet",
+      "date": "2024-07-17",
+      "url": "https://www.webtoons.com/en/canvas/loud-life/meet-n-greet/viewer?title_no=939294&episode_no=4"
+    },
+    {
+      "number": 5,
+      "title": "Samuride or Die",
+      "date": "2024-08-22",
+      "url": "https://www.webtoons.com/en/canvas/loud-life/samuride-or-die/viewer?title_no=939294&episode_no=5"
+    },
+    {
+      "number": 6,
+      "title": "Vantablack",
+      "date": "2024-11-27",
+      "url": "https://www.webtoons.com/en/canvas/loud-life/vantablack/viewer?title_no=939294&episode_no=6"
+    },
+    {
+      "number": 7,
+      "title": "The Roadie",
+      "date": "2024-11-27",
+      "url": "https://www.webtoons.com/en/canvas/loud-life/the-roadie/viewer?title_no=939294&episode_no=7"
+    }
+  ]
+}

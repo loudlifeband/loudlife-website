@@ -1,34 +1,58 @@
 [
   {
-    "date": "2026-03-15",
-    "venue": "The Troubadour",
-    "city": "Los Angeles",
+    "date": "2026-01-16",
+    "venue": "Arlene Francis Center",
+    "city": "Santa Rosa",
     "state": "CA",
-    "ticketUrl": "https://tickets.example.com/loudlife",
-    "note": "w/ Dead Satellites"
-  },
-  {
-    "date": "2026-04-02",
-    "venue": "Elsewhere",
-    "city": "Brooklyn",
-    "state": "NY",
-    "ticketUrl": "https://tickets.example.com/loudlife-bk",
+    "ticketUrl": "",
     "note": ""
   },
   {
-    "date": "2026-05-10",
-    "venue": "Bottom Lounge",
-    "city": "Chicago",
-    "state": "IL",
-    "ticketUrl": "",
-    "note": "TBA"
-  },
-  {
-    "date": "2025-12-01",
-    "venue": "The Roxy",
-    "city": "Los Angeles",
+    "date": "2026-01-24",
+    "venue": "Streets",
+    "city": "Sacramento",
     "state": "CA",
     "ticketUrl": "",
-    "note": "SOLD OUT"
+    "note": ""
+  },
+  {
+    "date": "2026-01-25",
+    "venue": "Stay Gold",
+    "city": "Oakland",
+    "state": "CA",
+    "ticketUrl": "",
+    "note": ""
+  },
+  {
+    "date": "2026-01-31",
+    "venue": "Sky Church",
+    "city": "San Francisco",
+    "state": "CA",
+    "ticketUrl": "",
+    "note": ""
+  },
+  {
+    "date": "2026-02-27",
+    "venue": "Richmond Planetarium",
+    "city": "Richmond",
+    "state": "CA",
+    "ticketUrl": "",
+    "note": ""
+  },
+  {
+    "date": "2026-03-01",
+    "venue": "Winters Tavern",
+    "city": "Pacifica",
+    "state": "CA",
+    "ticketUrl": "",
+    "note": ""
+  },
+  {
+    "date": "2026-03-13",
+    "venue": "Old Ironsides",
+    "city": "Sacramento",
+    "state": "CA",
+    "ticketUrl": "",
+    "note": ""
   }
 ]
