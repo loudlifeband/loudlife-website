@@ -54,5 +54,29 @@
     "state": "CA",
     "ticketUrl": "",
     "note": ""
+  },
+  {
+    "date": "2026-03-19",
+    "venue": "Brick & Mortar",
+    "city": "San Francisco",
+    "state": "CA",
+    "ticketUrl": "",
+    "note": ""
+  },
+  {
+    "date": "2026-03-22",
+    "venue": "",
+    "city": "San Francisco",
+    "state": "CA",
+    "ticketUrl": "",
+    "note": ""
+  },
+  {
+    "date": "2026-03-28",
+    "venue": "Smash",
+    "city": "Sacramento",
+    "state": "CA",
+    "ticketUrl": "",
+    "note": ""
   }
 ]
